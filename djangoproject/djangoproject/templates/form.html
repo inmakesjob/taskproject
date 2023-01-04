@@ -1,0 +1,106 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dependent Dropdown in Django</title>
+</head>
+<body>
+<h2>Person Form</h2>
+
+<form method="post" id="personForm" data-course-url="{% url 'djangoprojectapp:ajax_load_course' %}">
+    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="date" class="form-control" name="date of birth" placeholder="Enter your date of birth">
+                    </div><br>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="age" placeholder="Enter your age">
+                    </div><br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">Female</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">Male</label>
+                    </div><br>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="phone number" placeholder="Enter your phone number">
+                    </div><br>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Enter your email">
+                    </div><br>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="address" placeholder="Enter your address">
+                    </div><br>
+                    <div>
+    {{ form.as_p }}
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_department").change(function () {
+        const url = $("#personForm").attr("data-course-url");  // get the url of the `load_course` view
+        const departmentId = $(this).val();  // get the selected country ID from the HTML input
+
+        $.ajax({                       // initialize an AJAX request
+            url: url,                    // set the url of the request (= /persons/ajax/load-course/ )
+            data: {
+                'department_id': departmentId       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_course` view function
+                $("#id_course").html(data);  // replace the contents of the city input with the data that came from the server
+                /*
+                let html_data = '<option value="">---------</option>';
+                data.forEach(function (course) {
+                    html_data += `<option value="${course.id}">${course.name}</option>`
+                });
+                console.log(html_data);
+                $("#id_course").html(html_data);
+                */
+            }
+        });
+
+    });
+</script>
+</div>
+                    <div class="col-md-4">
+                        <select name="purpose" class="form-control">
+                            <option value="0">--Select Purpose--</option>
+                            <option value="1">Enquiry</option>
+                            <option value="2">Place order</option>
+                            <option value="3">Return</option>
+                        </select>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked1">
+                        <label class="form-check-label" for="flexCheckChecked1">Notebook</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2">
+                        <label class="form-check-label" for="flexCheckChecked2">Pen</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked3">
+                        <label class="form-check-label" for="flexCheckChecked3">Pencil</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked4">
+                        <label class="form-check-label" for="flexCheckChecked4">Exam paper</label>
+                    </div>
+                     <div class="form-group">
+                        <button onclick="myalert()">Submit</button>
+                         <script>function myalert() {alert("Order is confirmed");}</script>
+
+                    </div>
+                    <div class="form-group">
+                        <a href="{% url 'storeapp:demo' %}" class="btn btn-success">Home</a>
+                    </div>
+                    <div class="form-group">
+                        <a href="{% url 'storeapp:logout' %}" class="btn btn-primary">Log out</a>
+                    </div>
+                </form>
+</body>
+</html>

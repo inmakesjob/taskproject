@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h2 style="text-align: center;">Login Page</h2>
+<div class="container">
+    <div class="row">
+        <form method="POST" class="p-3 shadow" style="padding-left: 650px;">
+          {% csrf_token %}
+            <div class="form-group">
+               <input type="text" class="form-control" name="username" placeholder="Username">
+            </div><br><br>
+            <div class="form-group">
+               <input type="password" class="form-control" name="password" placeholder="Password">
+            </div><br><br>
+            <div class="form-group">
+               <a href="{% url 'storeapp:avail' %}" class="btn btn-success">Submit</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

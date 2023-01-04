@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+   Welcome to School Store where you can buy different items and register for the course.........
+{% endblock %}
+
+{% block title %}
+ Avail services
+{% endblock %}
+
+{% block content %}
+<div class="mx-auto">
+   <img class="my_image my_image_padding" src="{% static 'img/banner.png' %}"  alt="our Products" width="2000" height="1000">
+</div>
+<br>
+<div class="mx-auto">
+   <div class="row row-cols-auto">
+      <h1 class="text-center my_title">Our Store Collections</h1>
+      <p class="text-justify">You can click on the ‘item to generate’ column and select the format you want content in.
+      Below that, you can select if you want an HTML tag in your content or not
+      After that, you can choose how many paragraphs you want in the ‘how many items to generate’ column.
+      Then, you can choose the minimum and maximum words you want per sentence.
+      Later, you can select the minimum and maximum sentences you want per paragraph.
+      Finally, click on the button ‘generate’</p>
+   </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

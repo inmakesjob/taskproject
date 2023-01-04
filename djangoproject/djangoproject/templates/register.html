@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<br>
+<br>
+<h2 style="text-align:center; font-color: blue">Registration</h2>
+<div class="container text-center">
+    <div class="row my_register" style="padding-left: 650px;">
+        <form method="POST" class="p-3 shadow" style="font-size: 15px; font-family: cursive;" >
+            {% csrf_token %}
+            <div class="form-group register_form">
+                <input type="text" class="form-control" name="username" placeholder="Username">
+            </div><br>
+            <div class="form-group register_form">
+                <input type="text" class="form-control" name="first_name" placeholder="Firstname">
+            </div><br>
+            <div class="form-group register_form">
+                <input type="text" class="form-control" name="last_name" placeholder="Lastname">
+            </div><br>
+            <div class="form-group register_form">
+                <input type="password" class="form-control" name="password" placeholder="Password">
+            </div><br>
+            <div class="form-group register_form">
+                <input type="password" class="form-control" name="cpassword" placeholder="Confirm password">
+            </div><br>
+            <div class="form-group register_form">
+                <a href="{% url 'storeapp:login' %}" class="btn btn-success">Submit</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% for message in messages %}
+{{message}}
+{% endfor %}
+</body>
+</html>
